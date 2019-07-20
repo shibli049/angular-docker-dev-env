@@ -1,14 +1,13 @@
-version: '3.0'
-
+version: '3.7'
 services:
   ng-development:
     image: ng-development
     container_name: ng-development
-    restart: always
+    restart: unless-stopped
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - '.:/app'
-      - '/app/node_modules'
-    network_mode: "host"
+    ports:
+      - "4200:4200"
